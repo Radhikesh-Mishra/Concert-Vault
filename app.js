@@ -6,7 +6,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const { error } = require('console');
 
-const PORT = 8000;
+const PORT = process.env.PORT;
 
 app.set('view engine', 'ejs');
 
