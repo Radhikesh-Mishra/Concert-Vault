@@ -1,0 +1,33 @@
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.mySlides {
+  display: none;
+}
+
+
+.card-container {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Default grid */
+  padding: 16px;
+}
+
+@media (min-width: 600px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr); /* Show 2 cards on screens wider than 600px */
+  }
+}
+
+@media (min-width: 900px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr); /* Show 3 cards on screens wider than 900px */
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-container {
+    grid-template-columns: repeat(4, 1fr); /* Show 4 cards on screens wider than 1200px */
+  }
+}
