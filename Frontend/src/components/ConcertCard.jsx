@@ -8,11 +8,17 @@ const ConcertCard = (props) => {
     const [email, setEmail] = useState('');
     const [mobile, setMobile] = useState('');
     const [numberOfTickets, setNumberOfTickets] = useState(1);
+    const [venue, setVenue] = useState('');
+
 
     const totalAmount = props.concert.ticketPrice * numberOfTickets;
 
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        setVenue(props.concert.concertLocation); // or props.concert.location depending on your prop name
+        setShow(true);
+    };
+    
 
     const handlePurchase = async (e) => {
         e.preventDefault();
@@ -70,7 +76,7 @@ const ConcertCard = (props) => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Buy Tickets</Modal.Title>
+                <Modal.Title>Buy Tickets for {venue}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handlePurchase}>

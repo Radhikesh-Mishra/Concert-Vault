@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
+
 
 const PORT = process.env.PORT;
 const app = express();
@@ -53,13 +55,13 @@ app.post('/api/buyTickets', async(req, res) => {
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: process.env.EMAIL_USER,
-                    pass: process.env.EMAIL_PASS,
+                    user: process.env.EMAIL_ID,
+                    pass: process.env.PASS,
                 },
             });
 
             const mailOptions = {
-                from: process.env.EMAIL_USER,
+                from: process.env.EMAIL_ID,
                 to: email,
                 subject: 'Ticket Purchase Confirmation',
                 text: `Dear ${name},\n\nThank you for purchasing ${numberOfTickets} ticket(s) for ${concertLocation} on ${concertDate}.\n\nBest regards,\nConcert Vault Team`,
@@ -94,13 +96,13 @@ app.post('/api/contact', async (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
+            user: process.env.EMAIL_ID,
+            pass: process.env.PASS,
         }
     });
 
     const mailOptions = {
-        from: process.env.EMAIL_USER,
+        from: process.env.EMAIL_ID,
         to: email,
         subject: 'Thank You for Your Message!',
         text: `Dear ${name},\n\nThank you for reaching out! We have received your message: "${message}"\n\nBest Regards,\nYour Concert Vault Team`
